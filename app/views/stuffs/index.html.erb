@@ -2,14 +2,24 @@
 <h2>Favorite Stuff</h2>
 <ul>
   <% @favorite_stuffs.each do |stuff| %>
-    <li><%= stuff.name %> <a href="/stuffs/<%= stuff.id %>/unfavorite"><span class="fav-star unfavorite"></span></a></li>
+    <li>
+      <%= stuff.name %>
+      <%= link_to "/stuffs/#{stuff.id}/unfavorite", method: :get do %>
+        <div class="fav-star unfavorite" id="stuff-<%= stuff.id %>"></div>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 
 <h2>Random Stuff</h2>
 <ul>
   <% @stuffs.each do |stuff| %>
-    <li><%= stuff.name %> <a href="/stuffs/<%= stuff.id %>/favorite"><span class="fav-star favorite"></span></a></li>
+    <li>
+      <%= stuff.name %>
+      <%= link_to "/stuffs/#{stuff.id}/favorite", method: :get do %>
+        <div class="fav-star favorite" id="stuff-<%= stuff.id %>"></div>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 
