@@ -1,0 +1,4 @@
+<%= link_to "/stuffs/#{stuff.id}/unfavorite", remote: true, method: :get, id: "stuff-#{stuff.id}" do %>
+  <div class="fav-star unfavorite"></div>
+<% end %>
+

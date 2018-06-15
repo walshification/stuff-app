@@ -1,7 +1,6 @@
 class StuffsController < ApplicationController
   def index
-    @favorite_stuffs = Stuff.where(favorite: true)
-    @stuffs = Stuff.where(favorite: false)
+    @stuffs = Stuff.all
   end
 
   def show
@@ -26,13 +25,21 @@ class StuffsController < ApplicationController
   def favorite
     @stuff = Stuff.find(params[:id])
     @stuff.update(favorite: true)
-    redirect_to stuffs_path
+    respond_to do |format|
+      format.js do
+        render "favorite.js.erb", locals: { stuff: @stuff }
+      end
+    end
   end
 
   def unfavorite
     @stuff = Stuff.find(params[:id])
     @stuff.update(favorite: false)
-    redirect_to stuffs_path
+    respond_to do |format|
+      format.js do
+        render "unfavorite.js.erb", locals: { stuff: @stuff }
+      end
+    end
   end
 
   private
