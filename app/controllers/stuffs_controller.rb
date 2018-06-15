@@ -23,6 +23,18 @@ class StuffsController < ApplicationController
     @stuff.destroy!
   end
 
+  def favorite
+    @stuff = Stuff.find(params[:id])
+    @stuff.update(favorite: true)
+    redirect_to stuffs_path
+  end
+
+  def unfavorite
+    @stuff = Stuff.find(params[:id])
+    @stuff.update(favorite: false)
+    redirect_to stuffs_path
+  end
+
   private
 
   def stuff_params
