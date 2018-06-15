@@ -1,7 +1,6 @@
 class StuffsController < ApplicationController
   def index
-    @favorite_stuffs = Stuff.where(favorite: true)
-    @stuffs = Stuff.where(favorite: false)
+    @stuffs = Stuff.all
   end
 
   def show
